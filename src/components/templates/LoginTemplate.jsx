@@ -5,11 +5,10 @@ export function LoginTemplate() {
   return (
     <Container imgfondo={v.imagenfondo}>
       <div className="contentCard">
-        <span className="version">versión 1.0</span>
         <div className="contentImg">
           <img src={v.logo} />
         </div>
-        <Titulo>Cerdyn</Titulo>
+        <Titulo>Login</Titulo>
         <p className="frase">Toma el control de tus 💵gastos e 💰ingresos</p>
         <ContainerBtn>
           <Btnsave titulo="Iniciar con google" icono={<v.iconogoogle />} bgcolor={v.colorSecundario} funcion={signInWithGoogle} />

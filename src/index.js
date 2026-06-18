@@ -1,4 +1,5 @@
 export { default as App } from './App';
+export * from './api/apiClient';
 export * from './components/atomos/Icono';
 export * from './components/moleculas/Btnsave';
 export * from './components/templates/HomeTemplate';
@@ -12,4 +13,3 @@ export * from './routers/routes';
 export * from './store/AuthStore';
 export * from './styles/themes';
 export * from './styles/variables';
-export * from './supabase/supabase.config';
