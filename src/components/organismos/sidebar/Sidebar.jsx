@@ -1,13 +1,20 @@
 import styled from "styled-components";
-import { v, LinksArray } from "../../../index";
+import { v, LinksArray, SecondarylinksArray, SidebarCard } from "../../../index";
 import { NavLink } from "react-router-dom";
 
 
 
 export function Sidebar({ state, setState }) {
+  const ModSidebaropen = () => {
+    setState(!state)
+  };
+
   return (
-    <Main >
-      <Container isOpen={state}>
+    <Main isOpen={state}>
+      <span className="Sidebarbutton" onClick={() => setState(!state)}>
+        {<v.iconoFlechaderecha />}
+      </span>
+      <Container isOpen={state} className={state ? "active" : ""}>
         <div className="Logocontent">
           <div className="imgcontent">
             <img src={v.logo} alt="logo" />
@@ -21,12 +28,34 @@ export function Sidebar({ state, setState }) {
               key={label} >
               <NavLink to={to} className={({ isActive }) => `Links ${isActive ? `active` : ``}`}>
                 <div className="Linkicon">{icon}</div>
-                <span>{label}</span>
+                {state && <span>{label}</span>}
               </NavLink>
             </div>
           ))
         }
+
         <Divider />
+
+        {
+          SecondarylinksArray.map(({ icon, label, to }) => (
+            <div className={state ? "LinkContainer active" : "LinkContainer"}
+              key={label} >
+              <NavLink to={to} className={({ isActive }) => `Links ${isActive ? `active` : ``}`}>
+                <div className="Linkicon">{icon}</div>
+                {state && <span>{label}</span>}
+              </NavLink>
+            </div>
+          ))
+        }
+
+        <Divider />
+        {
+          state && <SidebarCard />
+        }
+
+
+
+
 
       </Container>;
 
@@ -43,7 +72,24 @@ const Container = styled.div`
   position: fixed;
   padding-top: 20px;
   height: 100%;
-  z-index: 100;
+  z-index: 1;
+  width:65px;
+  transition: 0.3s ease-in-out;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colorScroll};
+    border-radius: 10px;
+  }
+
+  &.active{
+    width: 220px;
+  }
   .Logocontent{
     display: flex;
     justify-content: center;
@@ -122,7 +168,26 @@ const Container = styled.div`
 `;
 
 const Main = styled.dev`
+.Sidebarbutton{
+  position: fixed;
+  top: 70px;
+  left: 42px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.bgtderecha};
+  box-shadow: 0 0 4px ${({ theme }) => theme.bg3},
+  0 0 7px ${({ theme }) => theme.bg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 2;
+  transform: ${({ isOpen }) => (isOpen ? `translatex(162px) rotate(3.142rad)` : `initial`)};
 
+
+}
 `;
 
 const Divider = styled.div`
@@ -130,4 +195,5 @@ height: 1px;
 width: 100%;
 background: ${({ theme }) => theme.bg4};
 margin: ${() => v.lgSpacing} 0;
+
 `;
