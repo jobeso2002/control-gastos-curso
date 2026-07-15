@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Btnsave } from "../../../index";
+import { v, Btnsave } from "../../../index";
 
 
 export function SidebarCard() {
@@ -13,62 +13,66 @@ export function SidebarCard() {
                 <div className="circle2"></div>
                 <h3>centro de ayuda</h3>
                 <div className="contentBtn">
-<Btnsave titulo="Conectar" bgcolor="#f8f2fd" />
+                    <Btnsave titulo="Conectar" bgcolor="#f8f2fd" />
                 </div>
-                
+
             </div>
 
         </Container>
     );
 }
+
 const Container = styled.div`
   width: 100%;
   padding: 1rem;
   text-align: center;
   position: relative;
-  .icon{
+
+  .icon {
     position: absolute;
     font-size: 3rem;
     border-radius: 50%;
-    top:-8px;
-    right: 50px;
+    top: -8px;
+    right: 50%;
     transform: translate(50%);
     z-index: 100;
   }
-  .cardContent{
+  .cardContent {
     position: relative;
     padding: 1rem;
-    background: ${({ theme }) => theme.bg5};
+    background: ${(props) => props.theme.bg5};
     border-radius: 10px;
     overflow: hidden;
-    .circle1,.circle2{
-        position: absolute;
-        background: ${({ theme }) => theme.whiteBg};
-        border-radius: 50%;
-        opacity: 0.7;
+
+    .circle1,
+    .circle2 {
+      position: absolute;
+      background: ${(props) => props.theme.whiteBg};
+      border-radius: 50%;
+      opacity: 0.7;
     }
-    .circle1{
-        height: 100px;
-        width: 100px;
-        top: -50px;
-        left: -50px;
+    .circle1 {
+      height: 100px;
+      width: 100px;
+      top: -50px;
+      left: -50px;
     }
-    .circle2{
-        height: 130px;
-        width: 130px;
-        bottom: -80px;
-        right: -70px;
-        z-index: 1;
+    .circle2 {
+      height: 130px;
+      width: 130px;
+      bottom: -80px;
+      right: -70px;
     }
-    h3{
-        font-size: 1.1rem;
-        margin-top: 1rem;
-        padding: 1rem 0;
-        font-weight: 800;
-        color: #000;
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      padding: 1rem 0;
+      font-weight: 800;
+      color: #000;
     }
-    .contentBtn{
-        margin-left: 1opx;
+    .contentBtn {
+      position:relative;
+      margin-left:-8px;
     }
   }
-`
+`;

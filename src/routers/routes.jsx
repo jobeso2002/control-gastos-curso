@@ -5,11 +5,10 @@ export function MyRoutes() {
   const { user } = UserAuth();
   return (
     
-    <Routes future={{ v7_relativeSplatPath: true }}>
+    <Routes >
       <Route path="/login" element={<Login />} />
       <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Home />} />
       </Route>
     </Routes>
   );

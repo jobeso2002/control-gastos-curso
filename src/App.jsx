@@ -20,7 +20,7 @@ function App() {
 
             <Container className={sidebarOpen ? "active" : ""}>
               <div className="ContentSidebar">
-                <Sidebar state={sidebarOpen} setState={setSidebarOpen} />
+                <Sidebar state={sidebarOpen} setState={()=> setSidebarOpen(!sidebarOpen)} />
               </div>
 
               <div className="ContentMenuambur">
@@ -42,42 +42,37 @@ function App() {
 }
 
 const Container = styled.div`
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr;
   background: ${({ theme }) => theme.bgtotal};
-  transition: 0.3s ease-in-out;
-
-  .ContentSidebar{
+  transition: all 0.2s ease-in-out;
+ 
+  .ContentSidebar {
     display: none;
   }
-  .ContentMenuambur{
+  .ContentMenuambur {
     display: block;
     position: absolute;
     left: 20px;
-  
   }
-
   @media ${Device.tablet} {
     grid-template-columns: 65px 1fr;
-    &.active{
+    &.active {
       grid-template-columns: 220px 1fr;
     }
-    .ContentSidebar{
+    .ContentSidebar {
       display: initial;
     }
-    .ContentMenuambur{
+    .ContentMenuambur {
       display: none;
     }
   }
-
 `;
-
 const Containerbody = styled.div`
   grid-column: 1;
   width: 100%;
-   @media ${Device.tablet} {
+  @media ${Device.tablet} {
     grid-column: 2;
-
   }
 `;
 export default App;

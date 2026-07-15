@@ -17,6 +17,7 @@ export function LoginTemplate() {
     </Container>
   );
 }
+
 const Container = styled.div`
   background-image: url(${(props) => props.imgfondo});
   background-repeat: no-repeat;
